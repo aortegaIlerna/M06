@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alumnos>
+    <alumno curso="M06">
+        <nombre>AA AA</nombre>
+        <centro>Ilerna</centro>
+    </alumno>
+    <alumno curso="M06">
+        <nombre>BB BB</nombre>
+        <centro>Ilerna</centro>
+    </alumno>
+    <alumno curso="M06">
+        <nombre>CC CC</nombre>
+        <centro>Ilerna</centro>
+    </alumno>
+    <alumno curso="M06">
+        <nombre>DD DD</nombre>
+        <centro>Ilerna</centro>
+    </alumno>
+    <alumno curso="M06">
+        <nombre>EE EE</nombre>
+        <centro>Ilerna</centro>
+    </alumno>
+    <alumno curso="M07">
+        <nombre>AA AA</nombre>
+        <centro>Ilerna</centro>
+    </alumno>
+    <alumno curso="M07">
+        <nombre>BB BB</nombre>
+        <centro>Ilerna</centro>
+    </alumno>
+    <alumno curso="M07">
+        <nombre>CC CC</nombre>
+        <centro>Ilerna</centro>
+    </alumno>
+    <alumno curso="M07">
+        <nombre>DD DD</nombre>
+        <centro>Ilerna</centro>
+    </alumno>
+    <alumno curso="M07">
+        <nombre>EE EE</nombre>
+        <centro>Ilerna</centro>
+    </alumno>
+    <alumno curso="M06">
+        <nombre>Alvaro</nombre>
+    <centro>Prueba123</centro>
+    </alumno>
+</alumnos>
