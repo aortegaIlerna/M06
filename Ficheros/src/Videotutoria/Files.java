@@ -5,32 +5,57 @@ import java.io.*;
 public class Files {
 
     public static void main(String[] args) {
-
-        /*Constructores*/
+/*
+        *//*Constructores*//*
+        System.out.println("Constructor");
         creacionFicheros();
+        printLinea(1);
 
-        /*Leer y escribir ficheros secuenciales*/
+
+        *//*Leer y escribir ficheros secuenciales*//*
+        System.out.println("fileWriter");
         fileWriter();
+        printLinea(2);
+        System.out.println("fileReader");
         fileReader();
+        printLinea(3);
 
-        /* Fichero de acceso aleatorio */
+
+        *//* Fichero de acceso aleatorio *//*
+        System.out.println("randomAccesFile");
         randomAccesFile();
+        printLinea(4);
 
-        /* Ficheros Binarios*/
+
+        *//* Ficheros Binarios*//*
+        System.out.println("fileOutputStream");
         fileOutputStream();
+        printLinea(5);
+        System.out.println("fileReaderStream");
         fileReaderStream();
+        printLinea(6);
 
-        /* XML */
+        *//* XML *//*
+        System.out.println("xmlReaderDOM");
         xmlReaderDOM();
+        printLinea(7);
+        System.out.println("xmlWriter");
         xmlWriter();
-        /*TODO crear método XMLReaderSAX */
-        //xmlReaderSAX();
+        printLinea(8);
+        System.out.println("xmlReaderSAX");*/
+        xmlReaderSAX();
+        printLinea(9);
 
+    }
+
+    private static void xmlReaderSAX() {
+        FicheroXML xml = new FicheroXML();
+        xml.parserSAX();
     }
 
     private static void xmlWriter() {
         FicheroXML xml = new FicheroXML();
-        xml.writeXML(new File("ficheros/gato.xml"), new Gato());
+        xml.writeXML(new File("Ficheros/ficheros/gato.xml"), new Gato());
     }
 
     private static void xmlReaderDOM() {
@@ -39,7 +64,7 @@ public class Files {
     }
 
     private static void fileReaderStream() {
-        File ficheroGato = new File("ficheros/gato");
+        File ficheroGato = new File("Ficheros/ficheros/gato");
         try {
             FileInputStream fileIn = new FileInputStream(ficheroGato);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileIn);
@@ -59,7 +84,7 @@ public class Files {
         gato.setPeso(14.23);
         gato.setName("VT2");
 
-        File ficheroGato = new File("ficheros/gato");
+        File ficheroGato = new File("Ficheros/ficheros/gato");
         try {
             FileOutputStream file = new FileOutputStream(ficheroGato, true);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(file);
@@ -71,7 +96,7 @@ public class Files {
 
     private static void randomAccesFile() {
         System.out.println(System.getProperty("file.separator"));
-        File fichero1 = new File("C:\\Users\\aortega\\IdeaProjects\\Ilerna1\\ficheros\\filewriter7.txt");
+        File fichero1 = new File("C:\\Users\\aortega\\Desktop\\Intellij\\M06\\Ficheros\\ficheros\\filewriter7.txt");
         System.out.println(fichero1.getAbsolutePath());
         System.out.println(fichero1.getPath());
         try {
@@ -92,7 +117,7 @@ public class Files {
 
 
     private static void fileWriter() {
-        File fichero1 = new File("ficheros/filewriter.txt");
+        File fichero1 = new File("Ficheros/ficheros/filewriter.txt");
         try {
             FileWriter writer = new FileWriter(fichero1);
             writer.write("Fichero de prueba son las 18:47");
@@ -106,7 +131,7 @@ public class Files {
     }
 
     private static void fileReader() {
-        File fichero1 = new File("ficheros/filewriter.txt");
+        File fichero1 = new File("Ficheros/ficheros/filewriter.txt");
         try {
             FileReader reader = new FileReader(fichero1);
             int valor = reader.read();
@@ -123,19 +148,19 @@ public class Files {
     }
 
     private static void creacionFicheros() {
-        File fichero1 = new File("ficheros\\fichero1.txt");
+        File fichero1 = new File("Ficheros\\ficheros\\fichero1.txt");
         System.out.println(fichero1.getName());
         System.out.println(fichero1.getParent());
         System.out.println(fichero1.getPath());
         System.out.println(fichero1.getAbsolutePath());
         printLinea();
-        File fichero2 = new File(new File("src/Videotutorial2/rsc/"), "fichero2.txt");
+        File fichero2 = new File(new File("Ficheros\\ficheros"), "fichero2.txt");
         System.out.println(fichero2.getName());
         System.out.println(fichero2.getParent());
         System.out.println(fichero2.getPath());
         System.out.println(fichero2.getAbsolutePath());
         printLinea();
-        File fichero3 = new File("src/Videotutorial2/rsc/ext/", "fichero3.txt");
+        File fichero3 = new File("Ficheros\\ficheros", "fichero3.txt");
         System.out.println(fichero3.getName());
         System.out.println(fichero3.getParent());
         System.out.println(fichero3.getPath());
@@ -151,6 +176,11 @@ public class Files {
 
     private static void printLinea() {
         System.out.println("******************************************");
+    }
+
+
+    private static void printLinea(int contador) {
+        System.out.println(contador + "******************************************");
     }
 
 }

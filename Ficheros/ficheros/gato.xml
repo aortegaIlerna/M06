@@ -1,5 +1,5 @@
-<Gato>
-  <Años>18</Años>
-  <Peso__kg>15.12</Peso__kg>
-  <nombre>Gato</nombre>
-</Gato>
+<Videotutoria.Gato>
+  <edad>18</edad>
+  <peso>15.12</peso>
+  <name>Gato</name>
+</Videotutoria.Gato>

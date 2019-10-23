@@ -5,15 +5,14 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.Attributes;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import javax.xml.parsers.*;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class FicheroXML {
 
@@ -21,7 +20,7 @@ public class FicheroXML {
         try {
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = documentBuilderFactory.newDocumentBuilder();
-            Document document = builder.parse(new File("ficheros/fichero1.xml"));
+            Document document = builder.parse(new File("Ficheros/ficheros/fichero1.xml"));
             NodeList nList = document.getElementsByTagName("alumno");
 
             for (int temp = 0; temp < nList.getLength(); temp++) {
@@ -42,13 +41,75 @@ public class FicheroXML {
         }
     }
 
+    public void parserSAX() {
+        try {
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            SAXParser saxParser = factory.newSAXParser();
 
-    public<T> void writeXML(File file, T object) {
+
+            DefaultHandler handler = new DefaultHandler() {
+                /*Variable creadas para poder comprobar si hay datos*/
+                boolean bNombre = false;
+                boolean bCentro = false;
+
+                /*Funcion invocada al inicio de cada elemento*/
+                public void startElement(String uri, String localName, String qName, Attributes attributes) {
+                    if (qName.equalsIgnoreCase("alumnos"))
+                        System.out.println(qName);
+                    if (qName.equalsIgnoreCase("alumno")) {
+                        System.out.print("\t" + qName);
+                        String id = attributes.getValue("curso");
+                        System.out.println("\tid: " + id);
+                    }
+                    if (qName.equalsIgnoreCase("nombre")) {
+                        bNombre = true;
+                    }
+                    if (qName.equalsIgnoreCase("centro")) {
+                        bCentro = true;
+                    }
+                }
+
+                /*Funcion invocada al fin de cada elemento*/
+                public void endElement(String uri, String localName, String qName) {
+                    if (qName.equalsIgnoreCase("alumnos"))
+                        System.out.println(qName);
+                    if (qName.equalsIgnoreCase("alumno"))
+                        System.out.println("\t" + qName);
+                }
+
+                /*Función invocada automaticamente y nos devuelve el contenido del elemento*/
+                public void characters(char[] ch, int start, int length) {
+                    if (bNombre) {
+                        System.out.println("\t\tNombre: " + new String(ch, start, length));
+                        bNombre = false;
+                    }
+                    if (bCentro) {
+                        System.out.println("\t\tCentro: " + new String(ch, start, length));
+                        bCentro = false;
+                    }
+                }
+            };
+
+            File file = new File("Ficheros/ficheros/fichero1.xml");
+            InputStream inputStream = new FileInputStream(file);
+            Reader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+
+            InputSource is = new InputSource(reader);
+            is.setEncoding("UTF-8");
+            saxParser.parse(is, handler);
+
+        } catch (SAXException | ParserConfigurationException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public <T> void writeXML(File file, T object) {
         XStream xstream = new XStream();
         xstream.autodetectAnnotations(true);
         try {
-            xstream.toXML(object,new FileOutputStream(file));
-            System.out.println("Fichero "+file.getName()+" crado correctamente");
+            xstream.toXML(object, new FileOutputStream(file));
+            System.out.println("Fichero " + file.getName() + " crado correctamente");
         } catch (FileNotFoundException e) {
             throw new MyXMLException("No se ha generado el fichero");
         }

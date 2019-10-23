@@ -1,16 +1,10 @@
 package Videotutoria;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-
 import java.io.Serializable;
-@XStreamAlias("Gato")
 public class Gato implements Serializable {
     private static final long serialVersionUID = 1L;
-    @XStreamAlias("Años")
     private int edad;
-    @XStreamAlias("Peso_kg")
     private double peso;
-    @XStreamAlias("nombre")
     private String name;
 
     public Gato() {
