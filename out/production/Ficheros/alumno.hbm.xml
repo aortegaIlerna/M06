@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/HibernateMappingDTD5.3//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="hibernate.Alumno" table="Alumnos" catalog="M06">
+        <id name="idAlumno">
+            <column name="alumno_id"/>
+            <generator class="assigned"></generator>
+        </id>
+        <property name="nombre"></property>
+    </class>
+</hibernate-mapping>

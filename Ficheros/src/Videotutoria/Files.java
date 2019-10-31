@@ -5,13 +5,13 @@ import java.io.*;
 public class Files {
 
     public static void main(String[] args) {
-        Constructores
+        /*Constructores*/
         System.out.println("Constructor");
         creacionFicheros();
         printLinea(1);
 
 
-        Leer y escribir ficheros secuenciales
+        /*Leer y escribir ficheros secuenciales*/
         System.out.println("fileWriter");
         fileWriter();
         printLinea(2);
@@ -20,13 +20,13 @@ public class Files {
         printLinea(3);
 
 
-         Fichero de acceso aleatorio
+        /* Fichero de acceso aleatorio*/
         System.out.println("randomAccesFile");
         randomAccesFile();
         printLinea(4);
 
 
-         Ficheros Binarios
+         /*Ficheros Binarios*/
         System.out.println("fileOutputStream");
         fileOutputStream();
         printLinea(5);
@@ -34,7 +34,7 @@ public class Files {
         fileReaderStream();
         printLinea(6);
 
-         XML
+         /*XML*/
         System.out.println("xmlReaderDOM");
         xmlReaderDOM();
         printLinea(7);
